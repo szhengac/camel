@@ -139,7 +139,7 @@ class FunctionCallingMessage(BaseMessage):
             "id": self.tool_call_id or "null",
             "type": "function",
             "function": {
-                "name": self.func_name,
+                "name": self.func_name or "tool_call",
                 "arguments": json.dumps(self.args, ensure_ascii=False),
             },
         }
@@ -178,6 +178,7 @@ class FunctionCallingMessage(BaseMessage):
             "role": "tool",
             "content": result_content,
             "tool_call_id": self.tool_call_id or "null",
+            "name": self.func_name
         }
 
     def to_dict(self) -> Dict:
