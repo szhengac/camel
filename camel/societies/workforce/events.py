@@ -128,6 +128,7 @@ class TaskFailedEvent(WorkforceEventBase):
     parent_task_id: Optional[str] = None
     error_message: str
     worker_id: Optional[str] = None
+    failure_count: Optional[int] = None
 
 
 class AllTasksCompletedEvent(WorkforceEventBase):
